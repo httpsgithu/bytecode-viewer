@@ -1,8 +1,6 @@
-package the.bytecode.club.bytecodeviewer.obfuscators.mapping.data;
-
 /***************************************************************************
  * Bytecode Viewer (BCV) - Java & Android Reverse Engineering Suite        *
- * Copyright (C) 2014 Kalen 'Konloch' Kinloch - http://bytecodeviewer.com  *
+ * Copyright (C) 2014 Konloch - Konloch.com / BytecodeViewer.com           *
  *                                                                         *
  * This program is free software: you can redistribute it and/or modify    *
  *   it under the terms of the GNU General Public License as published by  *
@@ -18,51 +16,63 @@ package the.bytecode.club.bytecodeviewer.obfuscators.mapping.data;
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-public class MethodMappingData {
+package the.bytecode.club.bytecodeviewer.obfuscators.mapping.data;
+
+public class MethodMappingData
+{
 
     protected String methodOwner;
     protected MappingData methodName;
     protected String methodDesc;
 
-    public MethodMappingData(MappingData methodName, String methodDesc) {
+    public MethodMappingData(MappingData methodName, String methodDesc)
+    {
         this("", methodName, methodDesc);
     }
 
-    public MethodMappingData(String methodOwner, MappingData methodName, String methodDesc) {
+    public MethodMappingData(String methodOwner, MappingData methodName, String methodDesc)
+    {
         this.methodOwner = methodOwner;
         this.methodName = methodName;
         this.methodDesc = methodDesc;
     }
 
-    public String getMethodOwner() {
+    public String getMethodOwner()
+    {
         return methodOwner;
     }
 
-    public MethodMappingData setMethodOwner(String methodOwner) {
+    public MethodMappingData setMethodOwner(String methodOwner)
+    {
         this.methodOwner = methodOwner;
         return this;
     }
 
-    public MappingData getMethodName() {
+    public MappingData getMethodName()
+    {
         return methodName;
     }
 
-    public MethodMappingData setMethodName(MappingData methodName) {
+    public MethodMappingData setMethodName(MappingData methodName)
+    {
         this.methodName = methodName;
         return this;
     }
 
-    public String getMethodDesc() {
+    public String getMethodDesc()
+    {
         return methodDesc;
     }
 
-    public MethodMappingData setMethodDesc(String methodDesc) {
+    public MethodMappingData setMethodDesc(String methodDesc)
+    {
         this.methodDesc = methodDesc;
         return this;
     }
 
     @Override
-    public int hashCode() {
+    public int hashCode()
+    {
         final int prime = 31;
         int result = 1;
         result = (prime * result) + ((methodDesc == null) ? 0 : methodDesc.hashCode());
@@ -72,26 +82,36 @@ public class MethodMappingData {
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(Object obj)
+    {
         if (this == obj)
             return true;
         if (obj == null)
             return false;
         if (getClass() != obj.getClass())
             return false;
+
         MethodMappingData other = (MethodMappingData) obj;
-        if (methodDesc == null) {
+
+        if (methodDesc == null)
+        {
             if (other.methodDesc != null)
                 return false;
-        } else if (!methodDesc.equals(other.methodDesc))
+        }
+        else if (!methodDesc.equals(other.methodDesc))
             return false;
-        if (methodName == null) {
+
+        if (methodName == null)
+        {
             if (other.methodName != null)
                 return false;
-        } else if (!methodName.equals(other.methodName))
+        }
+        else if (!methodName.equals(other.methodName))
             return false;
-        if (methodOwner == null) {
+
+        if (methodOwner == null)
             return other.methodOwner == null;
-        } else return methodOwner.equals(other.methodOwner);
+        else
+            return methodOwner.equals(other.methodOwner);
     }
 }

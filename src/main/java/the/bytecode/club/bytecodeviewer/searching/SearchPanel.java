@@ -1,12 +1,6 @@
-package the.bytecode.club.bytecodeviewer.searching;
-
-import javax.swing.JPanel;
-import org.objectweb.asm.tree.ClassNode;
-import the.bytecode.club.bytecodeviewer.resources.ResourceContainer;
-
 /***************************************************************************
  * Bytecode Viewer (BCV) - Java & Android Reverse Engineering Suite        *
- * Copyright (C) 2014 Kalen 'Konloch' Kinloch - http://bytecodeviewer.com  *
+ * Copyright (C) 2014 Konloch - Konloch.com / BytecodeViewer.com           *
  *                                                                         *
  * This program is free software: you can redistribute it and/or modify    *
  *   it under the terms of the GNU General Public License as published by  *
@@ -22,6 +16,13 @@ import the.bytecode.club.bytecodeviewer.resources.ResourceContainer;
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
+package the.bytecode.club.bytecodeviewer.searching;
+
+import org.objectweb.asm.tree.ClassNode;
+import the.bytecode.club.bytecodeviewer.resources.ResourceContainer;
+
+import javax.swing.*;
+
 /**
  * @author Konloch
  * @author WaterWolf
@@ -29,7 +30,7 @@ import the.bytecode.club.bytecodeviewer.resources.ResourceContainer;
  */
 public interface SearchPanel
 {
-	JPanel getPanel();
-	
-	void search(ResourceContainer container, String resourceWorkingName, ClassNode node, boolean exact);
+    JPanel getPanel();
+
+    void search(ResourceContainer container, String resourceWorkingName, ClassNode node, boolean exact);
 }

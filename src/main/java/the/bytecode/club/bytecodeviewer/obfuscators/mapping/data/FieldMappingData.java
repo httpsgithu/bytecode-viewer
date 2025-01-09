@@ -1,8 +1,6 @@
-package the.bytecode.club.bytecodeviewer.obfuscators.mapping.data;
-
 /***************************************************************************
  * Bytecode Viewer (BCV) - Java & Android Reverse Engineering Suite        *
- * Copyright (C) 2014 Kalen 'Konloch' Kinloch - http://bytecodeviewer.com  *
+ * Copyright (C) 2014 Konloch - Konloch.com / BytecodeViewer.com           *
  *                                                                         *
  * This program is free software: you can redistribute it and/or modify    *
  *   it under the terms of the GNU General Public License as published by  *
@@ -18,51 +16,63 @@ package the.bytecode.club.bytecodeviewer.obfuscators.mapping.data;
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-public class FieldMappingData {
+package the.bytecode.club.bytecodeviewer.obfuscators.mapping.data;
+
+public class FieldMappingData
+{
 
     protected String fieldOwner;
     protected MappingData name;
     protected String desc;
 
-    public FieldMappingData(MappingData name, String desc) {
+    public FieldMappingData(MappingData name, String desc)
+    {
         this("", name, desc);
     }
 
-    public FieldMappingData(String fieldOwner, MappingData name, String desc) {
+    public FieldMappingData(String fieldOwner, MappingData name, String desc)
+    {
         this.fieldOwner = fieldOwner;
         this.name = name;
         this.desc = desc;
     }
 
-    public String getFieldOwner() {
+    public String getFieldOwner()
+    {
         return fieldOwner;
     }
 
-    public FieldMappingData setFieldOwner(String fieldOwner) {
+    public FieldMappingData setFieldOwner(String fieldOwner)
+    {
         this.fieldOwner = fieldOwner;
         return this;
     }
 
-    public MappingData getName() {
+    public MappingData getName()
+    {
         return name;
     }
 
-    public FieldMappingData setName(MappingData name) {
+    public FieldMappingData setName(MappingData name)
+    {
         this.name = name;
         return this;
     }
 
-    public String getDesc() {
+    public String getDesc()
+    {
         return desc;
     }
 
-    public FieldMappingData setDesc(String desc) {
+    public FieldMappingData setDesc(String desc)
+    {
         this.desc = desc;
         return this;
     }
 
     @Override
-    public int hashCode() {
+    public int hashCode()
+    {
         final int prime = 31;
         int result = 1;
         result = (prime * result) + ((desc == null) ? 0 : desc.hashCode());
@@ -72,26 +82,36 @@ public class FieldMappingData {
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(Object obj)
+    {
         if (this == obj)
             return true;
         if (obj == null)
             return false;
         if (getClass() != obj.getClass())
             return false;
+
         FieldMappingData other = (FieldMappingData) obj;
-        if (desc == null) {
+
+        if (desc == null)
+        {
             if (other.desc != null)
                 return false;
-        } else if (!desc.equals(other.desc))
+        }
+        else if (!desc.equals(other.desc))
             return false;
-        if (fieldOwner == null) {
+
+        if (fieldOwner == null)
+        {
             if (other.fieldOwner != null)
                 return false;
-        } else if (!fieldOwner.equals(other.fieldOwner))
+        }
+        else if (!fieldOwner.equals(other.fieldOwner))
             return false;
-        if (name == null) {
+
+        if (name == null)
             return other.name == null;
-        } else return name.equals(other.name);
+        else
+            return name.equals(other.name);
     }
 }

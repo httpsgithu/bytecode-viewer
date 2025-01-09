@@ -1,13 +1,6 @@
-package the.bytecode.club.bytecodeviewer.obfuscators;
-
-import org.objectweb.asm.tree.ClassNode;
-import org.objectweb.asm.tree.FieldNode;
-import the.bytecode.club.bytecodeviewer.BytecodeViewer;
-import the.bytecode.club.bytecodeviewer.api.ASMResourceUtil;
-
 /***************************************************************************
  * Bytecode Viewer (BCV) - Java & Android Reverse Engineering Suite        *
- * Copyright (C) 2014 Kalen 'Konloch' Kinloch - http://bytecodeviewer.com  *
+ * Copyright (C) 2014 Konloch - Konloch.com / BytecodeViewer.com           *
  *                                                                         *
  * This program is free software: you can redistribute it and/or modify    *
  *   it under the terms of the GNU General Public License as published by  *
@@ -23,25 +16,37 @@ import the.bytecode.club.bytecodeviewer.api.ASMResourceUtil;
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
+package the.bytecode.club.bytecodeviewer.obfuscators;
+
+import org.objectweb.asm.tree.ClassNode;
+import org.objectweb.asm.tree.FieldNode;
+import the.bytecode.club.bytecodeviewer.BytecodeViewer;
+import the.bytecode.club.bytecodeviewer.api.ASMResourceUtil;
+
 /**
  * Rename fields.
  *
  * @author Konloch
  */
 
-public class RenameFields extends JavaObfuscator {
+public class RenameFields extends JavaObfuscator
+{
 
     @Override
-    public void obfuscate() {
+    public void obfuscate()
+    {
         int stringLength = getStringLength();
 
         System.out.println("Obfuscating fields names...");
-        for (ClassNode c : BytecodeViewer.getLoadedClasses()) {
-            for (Object o : c.fields.toArray()) {
+
+        for (ClassNode c : BytecodeViewer.getLoadedClasses())
+        {
+            for (Object o : c.fields.toArray())
+            {
                 FieldNode f = (FieldNode) o;
                 String newName = generateUniqueName(stringLength);
-                ASMResourceUtil.renameFieldNode(c.name, f.name, f.desc, null,
-                        newName, null);
+                ASMResourceUtil.renameFieldNode(c.name, f.name, f.desc,
+                    null, newName, null);
                 f.name = newName;
             }
         }

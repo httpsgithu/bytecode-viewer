@@ -1,14 +1,6 @@
-package the.bytecode.club.bytecodeviewer.obfuscators;
-
-import org.objectweb.asm.Opcodes;
-import org.objectweb.asm.tree.ClassNode;
-import org.objectweb.asm.tree.MethodNode;
-import the.bytecode.club.bytecodeviewer.BytecodeViewer;
-import the.bytecode.club.bytecodeviewer.api.ASMResourceUtil;
-
 /***************************************************************************
  * Bytecode Viewer (BCV) - Java & Android Reverse Engineering Suite        *
- * Copyright (C) 2014 Kalen 'Konloch' Kinloch - http://bytecodeviewer.com  *
+ * Copyright (C) 2014 Konloch - Konloch.com / BytecodeViewer.com           *
  *                                                                         *
  * This program is free software: you can redistribute it and/or modify    *
  *   it under the terms of the GNU General Public License as published by  *
@@ -24,42 +16,42 @@ import the.bytecode.club.bytecodeviewer.api.ASMResourceUtil;
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
+package the.bytecode.club.bytecodeviewer.obfuscators;
+
+import org.objectweb.asm.Opcodes;
+import org.objectweb.asm.tree.ClassNode;
+import org.objectweb.asm.tree.MethodNode;
+import the.bytecode.club.bytecodeviewer.BytecodeViewer;
+import the.bytecode.club.bytecodeviewer.api.ASMResourceUtil;
+
 /**
  * Rename methods.
  *
  * @author Konloch
  */
 
-public class RenameMethods extends JavaObfuscator {
+public class RenameMethods extends JavaObfuscator
+{
 
     @Override
-    public void obfuscate() {
+    public void obfuscate()
+    {
         int stringLength = getStringLength();
 
         System.out.println("Obfuscating method names...");
-        for (ClassNode c : BytecodeViewer.getLoadedClasses()) {
-            for (Object o : c.methods.toArray()) {
+
+        for (ClassNode c : BytecodeViewer.getLoadedClasses())
+        {
+            for (Object o : c.methods.toArray())
+            {
                 MethodNode m = (MethodNode) o;
-                if (m.access != Opcodes.ACC_ABSTRACT
-                        && m.access != Opcodes.ACC_ABSTRACT
-                        + Opcodes.ACC_STATIC
-                        && m.access != Opcodes.ACC_ABSTRACT
-                        + Opcodes.ACC_STATIC + Opcodes.ACC_PUBLIC
-                        && m.access != Opcodes.ACC_ABSTRACT
-                        + Opcodes.ACC_STATIC + Opcodes.ACC_PRIVATE
-                        && m.access != Opcodes.ACC_ABSTRACT
-                        + Opcodes.ACC_STATIC + Opcodes.ACC_PROTECTED
-                        && m.access != Opcodes.ACC_ABSTRACT
-                        + Opcodes.ACC_PUBLIC
-                        && m.access != Opcodes.ACC_ABSTRACT
-                        + Opcodes.ACC_PRIVATE
-                        && m.access != Opcodes.ACC_ABSTRACT
-                        + Opcodes.ACC_PROTECTED) {
-                    if (!m.name.equals("main") && !m.name.equals("<init>")
-                            && !m.name.equals("<clinit>")) {
+                if (m.access != Opcodes.ACC_ABSTRACT && m.access != Opcodes.ACC_ABSTRACT + Opcodes.ACC_STATIC && m.access != Opcodes.ACC_ABSTRACT + Opcodes.ACC_STATIC + Opcodes.ACC_PUBLIC && m.access != Opcodes.ACC_ABSTRACT + Opcodes.ACC_STATIC + Opcodes.ACC_PRIVATE && m.access != Opcodes.ACC_ABSTRACT + Opcodes.ACC_STATIC + Opcodes.ACC_PROTECTED && m.access != Opcodes.ACC_ABSTRACT + Opcodes.ACC_PUBLIC && m.access != Opcodes.ACC_ABSTRACT + Opcodes.ACC_PRIVATE && m.access != Opcodes.ACC_ABSTRACT + Opcodes.ACC_PROTECTED)
+                {
+                    if (!m.name.equals("main") && !m.name.equals("<init>") && !m.name.equals("<clinit>"))
+                    {
                         String newName = generateUniqueName(stringLength);
                         ASMResourceUtil.renameMethodNode(c.name, m.name, m.desc,
-                                null, newName, null);
+                            null, newName, null);
                     }
                 }
             }

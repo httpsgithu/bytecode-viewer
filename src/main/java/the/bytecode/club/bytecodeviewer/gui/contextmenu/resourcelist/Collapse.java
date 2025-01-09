@@ -1,15 +1,6 @@
-package the.bytecode.club.bytecodeviewer.gui.contextmenu.resourcelist;
-
-import java.awt.event.ActionEvent;
-import javax.swing.AbstractAction;
-import the.bytecode.club.bytecodeviewer.BytecodeViewer;
-import the.bytecode.club.bytecodeviewer.gui.contextmenu.ContextMenuItem;
-import the.bytecode.club.bytecodeviewer.gui.contextmenu.ContextMenuType;
-import the.bytecode.club.bytecodeviewer.translation.TranslatedStrings;
-
 /***************************************************************************
  * Bytecode Viewer (BCV) - Java & Android Reverse Engineering Suite        *
- * Copyright (C) 2014 Kalen 'Konloch' Kinloch - http://bytecodeviewer.com  *
+ * Copyright (C) 2014 Konloch - Konloch.com / BytecodeViewer.com           *
  *                                                                         *
  * This program is free software: you can redistribute it and/or modify    *
  *   it under the terms of the GNU General Public License as published by  *
@@ -25,24 +16,31 @@ import the.bytecode.club.bytecodeviewer.translation.TranslatedStrings;
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
+package the.bytecode.club.bytecodeviewer.gui.contextmenu.resourcelist;
+
+import the.bytecode.club.bytecodeviewer.BytecodeViewer;
+import the.bytecode.club.bytecodeviewer.gui.contextmenu.ContextMenuItem;
+import the.bytecode.club.bytecodeviewer.gui.contextmenu.ContextMenuType;
+import the.bytecode.club.bytecodeviewer.translation.TranslatedStrings;
+
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+
 /**
  * @author Konloch
  * @since 7/26/2021
  */
 public class Collapse extends ContextMenuItem
 {
-	public Collapse()
-	{
-		super(ContextMenuType.DIRECTORY, ((tree, selPath, result, menu) ->
-		{
-			menu.add(new AbstractAction(TranslatedStrings.COLLAPSE.toString())
-			{
-				@Override
-				public void actionPerformed(ActionEvent e)
-				{
-					BytecodeViewer.viewer.resourcePane.expandAll(tree, selPath, false);
-				}
-			});
-		}));
-	}
+    public Collapse()
+    {
+        super(ContextMenuType.DIRECTORY, ((tree, selPath, result, menu) -> menu.add(new AbstractAction(TranslatedStrings.COLLAPSE.toString())
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                BytecodeViewer.viewer.resourcePane.expandAll(tree, selPath, false);
+            }
+        })));
+    }
 }

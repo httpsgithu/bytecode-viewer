@@ -1,12 +1,6 @@
-package the.bytecode.club.bytecodeviewer.gui.components;
-
-import java.awt.Image;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-
 /***************************************************************************
  * Bytecode Viewer (BCV) - Java & Android Reverse Engineering Suite        *
- * Copyright (C) 2014 Kalen 'Konloch' Kinloch - http://bytecodeviewer.com  *
+ * Copyright (C) 2014 Konloch - Konloch.com / BytecodeViewer.com           *
  *                                                                         *
  * This program is free software: you can redistribute it and/or modify    *
  *   it under the terms of the GNU General Public License as published by  *
@@ -22,6 +16,11 @@ import javax.swing.JLabel;
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
+package the.bytecode.club.bytecodeviewer.gui.components;
+
+import javax.swing.*;
+import java.awt.*;
+
 /**
  * Display an image on a JLabel element
  *
@@ -30,8 +29,8 @@ import javax.swing.JLabel;
  */
 public class ImageJLabel extends JLabel
 {
-	public ImageJLabel(Image image)
-	{
-		super("", new ImageIcon(image), JLabel.CENTER);
-	}
+    public ImageJLabel(Image image)
+    {
+        super("", new ImageIcon(image), JLabel.CENTER);
+    }
 }

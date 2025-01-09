@@ -1,11 +1,6 @@
-package the.bytecode.club.bytecodeviewer.gui.components;
-
-import javax.swing.Icon;
-import the.bytecode.club.bytecodeviewer.resources.IconResources;
-
 /***************************************************************************
  * Bytecode Viewer (BCV) - Java & Android Reverse Engineering Suite        *
- * Copyright (C) 2014 Kalen 'Konloch' Kinloch - http://bytecodeviewer.com  *
+ * Copyright (C) 2014 Konloch - Konloch.com / BytecodeViewer.com           *
  *                                                                         *
  * This program is free software: you can redistribute it and/or modify    *
  *   it under the terms of the GNU General Public License as published by  *
@@ -21,23 +16,37 @@ import the.bytecode.club.bytecodeviewer.resources.IconResources;
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
+package the.bytecode.club.bytecodeviewer.gui.components;
+
+import com.github.weisj.darklaf.components.RotatableIconAnimator;
+import com.github.weisj.darklaf.properties.icons.RotatableIcon;
+import the.bytecode.club.bytecodeviewer.resources.IconResources;
+
+import java.awt.event.HierarchyEvent;
+
 /**
  * @author Konloch
  * @since 7/4/2021
  */
 public class WaitBusyIcon extends JMenuItemIcon
 {
-	public WaitBusyIcon()
-	{
-		super(loadIcon());
-		setAlignmentY(0.65f);
-	}
-	
-	public static Icon loadIcon()
-	{
-		if(IconResources.busyIcon != null)
-			return IconResources.busyIcon;
-			
-		return IconResources.busyB64Icon;
-	}
+    private final RotatableIconAnimator animator;
+
+    public WaitBusyIcon()
+    {
+        super(new RotatableIcon(IconResources.busyIcon));
+
+        animator = new RotatableIconAnimator(8, (RotatableIcon) getIcon(), this);
+
+        addHierarchyListener(e ->
+        {
+            if ((e.getChangeFlags() & HierarchyEvent.PARENT_CHANGED) != 0)
+            {
+                if (getParent() == null)
+                    animator.stop();
+                else
+                    animator.start();
+            }
+        });
+    }
 }

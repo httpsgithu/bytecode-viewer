@@ -3,7 +3,10 @@
 Bytecode Viewer - a lightweight user-friendly Java/Android Bytecode Viewer, Decompiler & More.
 
 #### New Features
-* Dark mode with multiple themes
+* Jump to Declaration
+* Draggable tabs
+* Patched [CVE-2022-21675](https://github.com/Konloch/bytecode-viewer/security/advisories/GHSA-3wq9-j4fc-4wmc) (Make sure to upgrade to v2.11.X)
+* Dark mode by default with multiple themes
 * Translated into over 30 languages including: Arabic, German, Japanese, Mandarin, Russian, Spanish
 * Plugin Writer - create and edit external plugins from within BCV
 * Fixed Java & Bytecode editing/compiling
@@ -11,14 +14,9 @@ Bytecode Viewer - a lightweight user-friendly Java/Android Bytecode Viewer, Deco
 * Right-click menus on the resource and search panels
 * Javap disassembler
 * XAPK support
-* Updated nearly all dependencies (incl. decompilers like CFR, JD-GUI etc.)
-* Updated ASM library to version 9.1
+* Latest dependencies (incl. decompilers like CFR, JD-GUI etc.)
 * Added support to Java files compiled using JDK > 13
 * Migrated to Maven
-
-#### v2.10.x Notes
-* The rewrite/refactoring process is currently ongoing so please report any bugs you find
-* If you're encountering any issues try using [v2.9.22](https://github.com/Konloch/bytecode-viewer/releases/tag/v2.9.22)
 
 #### Links
 * [BCV Discord](https://discord.gg/aexsYpfMEf)
@@ -97,6 +95,9 @@ Just clone this repo and run ``mvn package``. It's that simple!
 ## Working on the source
 
 Open the Maven project (e.g. in IntelliJ, open the ``pom.xml`` as a project file).
+
+## UI Is Lagging
+Change the theme to your systems. Go into `View->Visual Settings->Window Theme` and select `System Theme`.
 
 ## Java Heap Space Issues (java.lang.OutOfMemoryError)
 Start BCV with more RAM, e.g. `java -Xmx3G -jar BCV.jar`
